@@ -1,23 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+import styles from './App.module.css';
+import MainPage from './main-page/main-page';
+import MovieDescriptions from './movie-descriptions/movie-descriptions';
 
-function App() {
+const MOVIE_API_URL = 'http://www.omdbapi.com/?i=tt3896198&apikey=17ebf30e';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <MainPage />
+      <MovieDescriptions/>
     </div>
   );
 }
