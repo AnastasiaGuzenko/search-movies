@@ -1,7 +1,7 @@
 const MovieDescriptions = () => {
   return (
     <div>
-      
+      MovieDescriptions
     </div>
   )
 }
