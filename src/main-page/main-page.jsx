@@ -1,5 +1,5 @@
 import Header from './header/header';
-import Preview from './preview/preview';
+import Previews from './previews/previews';
 import styles from './main-page.module.css'
 import { useEffect, useState} from 'react';
 import Movies from './movies/movies';
@@ -52,7 +52,8 @@ const MainPage = ({
   return (
     <div>
       <Header />
-      <Preview />
+      <Previews 
+      />
       <div>
         <div className={styles.movies}>
           <Movies

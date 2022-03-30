@@ -4,6 +4,7 @@ import Movie from './movie/movie'
 const Movies = ({
   title, value
 }) => {
+
   return (
   <div>
     <div className={styles.trends}>
