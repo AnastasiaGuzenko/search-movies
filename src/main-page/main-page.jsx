@@ -1,4 +1,3 @@
-import Header from './header/header';
 import Previews from './previews/previews';
 import styles from './main-page.module.css'
 import { useEffect, useState} from 'react';
@@ -51,7 +50,6 @@ const MainPage = ({
 
   return (
     <div>
-      <Header />
       <Previews 
       />
       <div>
