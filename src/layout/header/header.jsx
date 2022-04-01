@@ -20,10 +20,10 @@ const Header = () => {
         to="/">
         Главная
       </Link>
-      <Link 
-        to="movie-description">
+      {/* <Link 
+        to="movie-description/:id">
         *Страница описания
-      </Link>
+      </Link> */}
       <input 
         type="text"
         value={valueInput}

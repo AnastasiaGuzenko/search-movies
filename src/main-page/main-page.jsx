@@ -2,7 +2,7 @@ import Previews from './previews/previews';
 import styles from './main-page.module.css'
 import { useEffect, useState} from 'react';
 import Movies from './movies/movies';
-import {getMoviesURL} from './utils'
+import {getMoviesURL} from '../utils'
 
 const MOVIE_API_URL_TRENDING = 'https://api.themoviedb.org/3/trending/movie/week?api_key=4fff9675d3d2dfe17c3c52af125bcd71&language=en-US';
 

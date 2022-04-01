@@ -15,6 +15,7 @@ const Movies = ({
             <Movie
               key={movie.id}
               poster={movie.poster_path}
+              id={movie.id}
             />
           ))
         } 

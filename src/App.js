@@ -2,7 +2,7 @@ import styles from './App.module.css';
 import MainPage from './main-page/main-page';
 import { Route, Routes} from 'react-router-dom';
 import Layout from './layout/layout';
-import MovieDescription from './movie-description/movie-description';
+import MovieDescriptionPage from './movie-description-page/movie-description-page';
 
 
 const App = () => {
@@ -15,8 +15,8 @@ const App = () => {
             element={<MainPage/>} 
           />
           <Route 
-            path='movie-description' 
-            element={<MovieDescription/>} 
+            path='movie-description/:id' 
+            element={<MovieDescriptionPage/>} 
           />
         </Route>
       </Routes>
