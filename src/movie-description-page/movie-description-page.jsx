@@ -1,23 +1,25 @@
 import MovieDescription from "./movie-description/movie-description"
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
-
-const MOVIE_API_URL = 'https://api.themoviedb.org/3/movie/508947?api_key=4fff9675d3d2dfe17c3c52af125bcd71&language=en-US'
+import MovieDetails from "./movie-details/movie-details";
 
 const MovieDescriptionPage = () => {
   const {id} = useParams();
   const [movie, setMovie] = useState([]);
 
   useEffect(() => {
-    fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=4fff9675d3d2dfe17c3c52af125bcd71&language=en-US`)
+    fetch(`https://api.themoviedb.org/3/movie/${id}?&append_to_response=videos,similar,credits&api_key=4fff9675d3d2dfe17c3c52af125bcd71&language=en-US`)
       .then(response => response.json())
       .then(jsonResponse => {
         setMovie(jsonResponse);
         
       });
   }, [id])
-
-
+  
+  if (!Object.keys(movie).length) {
+    return null;
+  }
+  
   return <div>
     <div>
       <MovieDescription
@@ -25,6 +27,13 @@ const MovieDescriptionPage = () => {
         overview={movie.overview}
         runtime={movie.runtime}
         poster={movie.poster_path}
+        backdrop_path={movie.backdrop_path}
+        release_date={movie.release_date}
+        credits={movie.credits}
+      />
+      <MovieDetails
+        credits={movie.credits}
+        similar={movie.similar}
       />
     </div>
   </div>

@@ -1,3 +1,24 @@
+.movie-description {
+  background-color: black;
+  color: white;
+}
 .poster {
-  width: 200px;
+  width: 300px;
+  z-index: 3;
+  margin-right: 20px;
+}
+.wrapper {
+  color: white;
+  z-index: 2;
+  background: linear-gradient(0deg, rgb(20, 20, 20) 0%, rgba(20, 20, 20, 0.808) 100%);
+  display: flex;
+}
+
+.movie-description-up {
+  z-index: 1;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  object-fit: contain;
+  margin-bottom: 20px;
 }

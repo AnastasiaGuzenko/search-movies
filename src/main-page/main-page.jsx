@@ -47,7 +47,7 @@ const MainPage = ({
     getMoviesURL(MOVIE_API_URL_DOCUMENTARIES, setDocumentaries);
 
   }, [])
-
+ 
   return (
     <div>
       <Previews 
