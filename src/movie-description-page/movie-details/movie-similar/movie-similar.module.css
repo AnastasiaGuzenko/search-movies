@@ -1,0 +1,9 @@
+.poster {
+  width: 200px;
+  height: auto;
+  padding: 10px;
+}
+.movie-similar {
+  margin: 0 20px;
+  text-align: center;
+}

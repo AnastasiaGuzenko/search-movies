@@ -6,6 +6,10 @@ const MoviePersonCard = ({
   character, 
   job,
 }) => {
+  // let myProfilePath = profile_path;
+  // if (!myProfilePath) {
+  //   myProfilePath = ''
+  // }
   
   return <div className={styles['movie-person-card']}>
     <img 

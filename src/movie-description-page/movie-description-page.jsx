@@ -2,6 +2,7 @@ import MovieDescription from "./movie-description/movie-description"
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 import MovieDetails from "./movie-details/movie-details";
+import styles from './movie-description-page.module.css'
 
 const MovieDescriptionPage = () => {
   const {id} = useParams();
@@ -20,22 +21,20 @@ const MovieDescriptionPage = () => {
     return null;
   }
   
-  return <div>
-    <div>
-      <MovieDescription
-        title={movie.title}
-        overview={movie.overview}
-        runtime={movie.runtime}
-        poster={movie.poster_path}
-        backdrop_path={movie.backdrop_path}
-        release_date={movie.release_date}
-        credits={movie.credits}
-      />
-      <MovieDetails
-        credits={movie.credits}
-        similar={movie.similar}
-      />
-    </div>
+  return <div className={styles['movie-description-page']}>
+    <MovieDescription
+      title={movie.title}
+      overview={movie.overview}
+      runtime={movie.runtime}
+      poster={movie.poster_path}
+      backdrop_path={movie.backdrop_path}
+      release_date={movie.release_date}
+      credits={movie.credits}
+    />
+    <MovieDetails
+      credits={movie.credits}
+      similar={movie.similar}
+    />
   </div>
 }
 export default MovieDescriptionPage
