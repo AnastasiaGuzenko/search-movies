@@ -6,37 +6,50 @@ const MOVIE_API_URL_PREVIEW = 'https://api.themoviedb.org/3/movie/upcoming?api_k
 
 const Previews = ({
 }) => {
-  const [previewsMovies, setPreviewsMovies] = useState([]);
-  const [previewMovie, setPreviewMovie] = useState([])
+  const [previewMovies, setPreviewMovies] = useState([]);
+  const [previewMovie, setPreviewMovie] = useState({})
   
   useEffect(() => {
-    getMoviesURL(MOVIE_API_URL_PREVIEW, setPreviewsMovies) 
+    getMoviesURL(MOVIE_API_URL_PREVIEW, setPreviewMovies) 
   },[]);
 
   useEffect(() => {
-    if (previewsMovies.length) {
-      
+
+    let interval;
+
+    if (previewMovies.length) {
       const randomNum = () => {
-        return(Math.round(Math.random() * (19 - 0) + 0))
+        return(Math.round(Math.random() * 19))
       } 
       const randomMovie = () => {
-        setPreviewMovie(previewsMovies[randomNum()]);
+        setPreviewMovie(previewMovies[randomNum()]);
       }
-      randomMovie();      
-      
+      randomMovie();
+
+      interval = setInterval(() => {
+        randomMovie();      
+      }, 5000);
     }
-    
-  }, [previewsMovies])
+
+    return () => {
+      if (interval) {
+        clearInterval(interval);
+      }
+    }
+  }, [previewMovies]);
+
+  if (!Object.keys(previewMovie).length) {
+    return null;
+  }
 
   return (
     <div>
-      {
-      <Preview 
+      <Preview
         title={previewMovie.title}
         overview={previewMovie.overview}
         backdrop={previewMovie.backdrop_path}
+        id={previewMovie.id}
       />
-      }
     </div>
   )
 }
