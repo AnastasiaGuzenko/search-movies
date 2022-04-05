@@ -1,7 +1,7 @@
-import MoviePersonCard from "./movie-actor-card/movie-person-card"
+import MoviePersonCard from "../../common/movie-person-card/movie-person-card"
 import styles from './movie-details.module.css'
 import { v1 as uuidv1 } from 'uuid'
-import MovieSimilar from "./movie-similar/movie-similar"
+import MovieDescriptionLink from "../../common/movie-description-link/movie-description-link"
 
 const MovieDetails = ({
   credits,
@@ -19,10 +19,10 @@ const MovieDetails = ({
         {
           sliceOfArr(credits.cast, 9).map(person => (
             <MoviePersonCard
-              profile_path={person.profile_path}
+              profilePath={person.profile_path}
               name={person.name}
-              character={person.character}
-              key={uuidv1()}
+              activity={person.character}
+              key={person.id}
             />
           ))
         }
@@ -34,10 +34,10 @@ const MovieDetails = ({
         {
           sliceOfArr(credits.crew, 9).map(person => (
             <MoviePersonCard
-              profile_path={person.profile_path}
+              profilePath={person.profile_path}
               name={person.name}
+              activity={person.job}
               key={uuidv1()}
-              job={person.job}
             />
           ))
         }
@@ -48,8 +48,8 @@ const MovieDetails = ({
       <div className={styles['movie-details']}>
         {
           sliceOfArr(similar.results, 4).map(movie => (
-            <MovieSimilar
-              key={uuidv1()}
+            <MovieDescriptionLink
+              key={movie.id}
               poster={movie.poster_path}
               id={movie.id}
             />

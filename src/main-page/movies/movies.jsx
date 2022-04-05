@@ -1,5 +1,5 @@
 import styles from './movies.module.css'
-import Movie from './movie/movie'
+import MovieDescriptionLink from '../../common/movie-description-link/movie-description-link'
 
 const Movies = ({
   title, value
@@ -12,7 +12,7 @@ const Movies = ({
       <div className={styles.movies}>
         {
           value.map(movie => (
-            <Movie
+            <MovieDescriptionLink
               key={movie.id}
               poster={movie.poster_path}
               id={movie.id}

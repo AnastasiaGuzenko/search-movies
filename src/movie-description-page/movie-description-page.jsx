@@ -20,7 +20,7 @@ const MovieDescriptionPage = () => {
   if (!Object.keys(movie).length) {
     return null;
   }
-  
+
   return <div className={styles['movie-description-page']}>
     <MovieDescription
       title={movie.title}
