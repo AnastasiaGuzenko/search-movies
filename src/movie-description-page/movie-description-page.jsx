@@ -3,8 +3,12 @@ import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 import MovieDetails from "./movie-details/movie-details";
 import styles from './movie-description-page.module.css'
+import Loading from "../common/loading/loading";
 
-const MovieDescriptionPage = () => {
+const MovieDescriptionPage = ({
+  setLoading,
+  loading,
+}) => {
   const {id} = useParams();
   const [movie, setMovie] = useState([]);
 
@@ -13,28 +17,37 @@ const MovieDescriptionPage = () => {
       .then(response => response.json())
       .then(jsonResponse => {
         setMovie(jsonResponse);
-        
+        setLoading(false)
       });
   }, [id])
   
   if (!Object.keys(movie).length) {
     return null;
   }
+  
+  return <>
+    {loading ? (
+      <Loading/>
+    ) : (
+      <div className={styles['movie-description-page']}>
+        <MovieDescription
+          title={movie.title}
+          overview={movie.overview}
+          runtime={movie.runtime}
+          poster={movie.poster_path}
+          backdrop_path={movie.backdrop_path}
+          release_date={movie.release_date}
+          crew={movie.credits.crew}
+          genres={movie.genres}
+          videos={movie.videos.results}
 
-  return <div className={styles['movie-description-page']}>
-    <MovieDescription
-      title={movie.title}
-      overview={movie.overview}
-      runtime={movie.runtime}
-      poster={movie.poster_path}
-      backdrop_path={movie.backdrop_path}
-      release_date={movie.release_date}
-      credits={movie.credits}
-    />
-    <MovieDetails
-      credits={movie.credits}
-      similar={movie.similar}
-    />
-  </div>
+        />
+        <MovieDetails
+          credits={movie.credits}
+          similar={movie.similar}
+        />
+      </div>
+    )}
+  </>
 }
 export default MovieDescriptionPage
