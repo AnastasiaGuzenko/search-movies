@@ -41,7 +41,7 @@ const MovieDescription = ({
     } 
   }
 
-  const movieTrailer = videos[0].key
+  // const movieTrailer = videos[0].key
 
   return (
     <div className={styles['movie-description']}>
@@ -63,14 +63,14 @@ const MovieDescription = ({
                 <p>
                   {nameGener[0]} | {nameGener[1]} | {nameGener[2]} 
                 </p>
-                <iframe 
+                {/* <iframe 
                   width="560" 
                   height="315" 
                   src={`https://www.youtube.com/embed/${movieTrailer}`} 
                   title="YouTube video player" 
                   frameBorder="0" 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen>
-                </iframe>
+                </iframe> */}
               </div>
               <p>{overview}</p>
             </div>

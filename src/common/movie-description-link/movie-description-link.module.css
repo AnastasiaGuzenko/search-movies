@@ -1,6 +1,8 @@
 .poster {
-  width: 200px;
-  height: auto;
+  width: 160px;
+  height: 260px;
   padding: 10px;
   border-radius: 18px;
+  object-fit: cover;
+  border-color: #141414;
 }

@@ -1,0 +1,5 @@
+.search-modal {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #141414;
+}
