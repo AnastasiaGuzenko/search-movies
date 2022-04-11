@@ -13,15 +13,27 @@ const Preview = ({
   }
   return <div>
     <div 
-      className={styles.preview}
+      className={styles['background-image']}
       style={{
-        backgroundImage: `url(https://image.tmdb.org/t/p/w1280${myBackdrop})`
+        backgroundImage: `url("https://image.tmdb.org/t/p/w1280${myBackdrop}")`
       }}> 
-      <h1>{title}</h1>
-      <Link to={`movie-description/${id}`}>Details</Link>
-      <p>{overview}</p>
+      <div className={styles.gradient}>
+        <div className={styles['content-wrapper']}>
+          <div className={styles.content}>
+            <h1 className={styles.title}>{title}</h1>
+            <button className={styles.btn}>
+              <Link 
+                to={`movie-description/${id}`}
+                className={styles.link}
+                >
+                  Details
+              </Link>
+            </button>
+            <p className={styles.overview}>{overview}</p>
+          </div>
+        </div>
+      </div>
     </div>
-
   </div>
 }
 export default Preview

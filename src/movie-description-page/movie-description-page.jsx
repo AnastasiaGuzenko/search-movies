@@ -8,6 +8,8 @@ import Loading from "../common/loading/loading";
 const MovieDescriptionPage = ({
   setLoading,
   loading,
+  errorMessageDescriptionPage,
+  setErrorMessageDescriptionPage,
 }) => {
   const {id} = useParams();
   const [movie, setMovie] = useState([]);
@@ -16,8 +18,13 @@ const MovieDescriptionPage = ({
     fetch(`https://api.themoviedb.org/3/movie/${id}?&append_to_response=videos,similar,credits&api_key=4fff9675d3d2dfe17c3c52af125bcd71&language=en-US`)
       .then(response => response.json())
       .then(jsonResponse => {
-        setMovie(jsonResponse);
-        setLoading(false)
+        if (jsonResponse) {
+          setMovie(jsonResponse);
+          setLoading(false)
+        } else {
+          setErrorMessageDescriptionPage(jsonResponse.Error);
+          setLoading(false)
+        }
       });
   }, [id])
   
@@ -26,10 +33,12 @@ const MovieDescriptionPage = ({
   }
   
   return <>
-    {loading ? (
+    {loading && !errorMessageDescriptionPage ? (
       <Loading/>
+    ) : errorMessageDescriptionPage ? (
+      <div className="errorMessage">Oops, something went wrong. Try refreshing the page.</div>
     ) : (
-      <div className={styles['movie-description-page']}>
+      <div>
         <MovieDescription
           title={movie.title}
           overview={movie.overview}

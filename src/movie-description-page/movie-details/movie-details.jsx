@@ -12,9 +12,9 @@ const MovieDetails = ({
     return (props.slice(0, max))
   }
   
-  return <div>
+  return <div className={styles['movie-details-wrapper']}>
     <div>
-      <p>Cast</p>
+      <p className={styles.title}>Cast</p>
       <div className={styles['movie-details']}>
         {
           sliceOfArr(credits.cast, 9).map(person => (
@@ -29,7 +29,7 @@ const MovieDetails = ({
       </div>
     </div>
     <div>
-      <p>Crew</p>
+      <p className={styles.title}>Crew</p>
       <div className={styles['movie-details']}>
         {
           sliceOfArr(credits.crew, 9).map(person => (
@@ -44,7 +44,7 @@ const MovieDetails = ({
       </div>
     </div>
     <div>
-      <p>More Like This</p>
+      <p className={styles.title}>More Like This</p>
       <div className={styles['movie-details']}>
         {
           sliceOfArr(similar.results, 4).map(movie => (

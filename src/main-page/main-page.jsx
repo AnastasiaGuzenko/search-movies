@@ -18,6 +18,8 @@ const MOVIE_API_URL_DOCUMENTARIES = 'https://api.themoviedb.org/3/discover/movie
 const MainPage = ({
   setLoading,
   loading,
+  errorMessageMainPage,
+  setErrorMessageMainPage,
 }) => {
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [popularMovies, setPopularMovies] = useState([]);
@@ -30,79 +32,85 @@ const MainPage = ({
   const [documentaries, setDocumentaries] = useState([]);
 
   useEffect(() => {
-    getMoviesURL(MOVIE_API_URL_TRENDING, setTrendingMovies, setLoading);
-    getMoviesURL(MOVIE_API_URL_POPULAR, setPopularMovies, setLoading);
-    getMoviesURL(MOVIE_API_URL_TOP_RATED_MOVIES, setTopRatedMovies, setLoading);
-    getMoviesURL(MOVIE_API_URL_TOP_COMEDY_MOVIES, setComedyMovies, setLoading);
-    getMoviesURL(MOVIE_API_URL_TOP_ACTION_MOVIES, setActionMovies, setLoading);
-    getMoviesURL(MOVIE_API_URL_TOP_ROMANTIC_MOVIES, setRomanticMovies, setLoading);
-    getMoviesURL(MOVIE_API_URL_CRIME_MOVIES, setCrimeMovies, setLoading);
-    getMoviesURL(MOVIE_API_URL_HORROR_MOVIES, setHorrorMovies, setLoading);
-    getMoviesURL(MOVIE_API_URL_DOCUMENTARIES, setDocumentaries, setLoading);
+    getMoviesURL(MOVIE_API_URL_TRENDING, setTrendingMovies, setLoading, setErrorMessageMainPage);
+    getMoviesURL(MOVIE_API_URL_POPULAR, setPopularMovies, setLoading, setErrorMessageMainPage);
+    getMoviesURL(MOVIE_API_URL_TOP_RATED_MOVIES, setTopRatedMovies, setLoading, setErrorMessageMainPage);
+    getMoviesURL(MOVIE_API_URL_TOP_COMEDY_MOVIES, setComedyMovies, setLoading, setErrorMessageMainPage);
+    getMoviesURL(MOVIE_API_URL_TOP_ACTION_MOVIES, setActionMovies, setLoading, setErrorMessageMainPage);
+    getMoviesURL(MOVIE_API_URL_TOP_ROMANTIC_MOVIES, setRomanticMovies, setLoading, setErrorMessageMainPage);
+    getMoviesURL(MOVIE_API_URL_CRIME_MOVIES, setCrimeMovies, setLoading, setErrorMessageMainPage);
+    getMoviesURL(MOVIE_API_URL_HORROR_MOVIES, setHorrorMovies, setLoading, setErrorMessageMainPage);
+    getMoviesURL(MOVIE_API_URL_DOCUMENTARIES, setDocumentaries, setLoading, setErrorMessageMainPage);
   }, [])
   
   return (
     <div>
-      <div className="movies">
-        {loading ? (
+      <div>
+        {loading && !errorMessageMainPage ? (
          <Loading />
+         ) : errorMessageMainPage ? (
+          <div className="errorMessage">Oops, something went wrong. Try refreshing the page.</div>
          ) : (
           <>
             <Previews/>
-            <div className={styles.movies}>
-              <Movies
-                value={trendingMovies}
-                title='Trending Movies'
-              />
+            <div className={styles['movies-wrapper']}>
+              <div className={styles.movies}>
+                <Movies
+                  value={trendingMovies}
+                  title='Trending Movies'
+                />
+              </div>
+              <div className={styles.movies}>
+                <Movies
+                  value={popularMovies}
+                  title='Popular Movies'
+                />
+              </div>
+              <div className={styles.movies}>
+                <Movies
+                  value={topRatedMovies}
+                  title='Top Rated Movies'
+                />
+              </div>
+              <div className={styles.movies}>
+                <Movies
+                  value={comedyMovies}
+                  title='Comedy Movies'
+                />
+              </div>
+              <div className={styles.movies}>
+                <Movies
+                  value={actionMovies}
+                  title='Action Movies'
+                />
+              </div>
+              <div className={styles.movies}>
+                <Movies
+                  value={romanticMovies}
+                  title='Romantic Movies'
+                />
+              </div>
+              <div className={styles.movies}>
+                <Movies
+                  value={crimeMovies}
+                  title='Crime Movies'
+                />
+              </div>
+              <div className={styles.movies}>
+                <Movies
+                  value={horrorMovies}
+                  title='Horror Movies'
+                />
+              </div>
+              <div className={styles.movies}>
+                <Movies
+                  value={documentaries}
+                  title='Documentaries'
+                />
+              </div>
+
             </div>
-            <div className={styles.movies}>
-              <Movies
-                value={popularMovies}
-                title='Popular Movies'
-              />
-            </div>
-            <div className={styles.movies}>
-              <Movies
-                value={topRatedMovies}
-                title='Top Rated Movies'
-              />
-            </div>
-            <div className={styles.movies}>
-              <Movies
-                value={comedyMovies}
-                title='Comedy Movies'
-              />
-            </div>
-            <div className={styles.movies}>
-              <Movies
-                value={actionMovies}
-                title='Action Movies'
-              />
-            </div>
-            <div className={styles.movies}>
-              <Movies
-                value={romanticMovies}
-                title='Romantic Movies'
-              />
-            </div>
-            <div className={styles.movies}>
-              <Movies
-                value={crimeMovies}
-                title='Crime Movies'
-              />
-            </div>
-            <div className={styles.movies}>
-              <Movies
-                value={horrorMovies}
-                title='Horror Movies'
-              />
-            </div>
-            <div className={styles.movies}>
-              <Movies
-                value={documentaries}
-                title='Documentaries'
-              />
-            </div>
+            
           </>
         )}
       </div>

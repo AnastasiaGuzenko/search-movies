@@ -11,14 +11,16 @@ const App = () => {
   const [visible, setVisible] = useState(false)
   const [loadingMainPage, setLoadingMainPage] = useState(true);
   const [loadingMovieDescriptionPage, setLoadingMovieDescriptionPage] = useState(true);
-  const [moviesSearchValue, setMoviesSearchValue] = useState([])
+  const [moviesSearchValue, setMoviesSearchValue] = useState([]);
+
+  const [errorMessageMainPage, setErrorMessageMainPage] = useState(null);
+  const [errorMessageDescriptionPage, setErrorMessageDescriptionPage] = useState(null);
 
   const closeSearchModal = () => {
     setVisible(false)
   }
   
   return (
-    <>
     <div className={styles.wrapper}>
       <div className={styles.content}>
         <Header
@@ -45,6 +47,8 @@ const App = () => {
                 <MainPage 
                 setLoading={setLoadingMainPage}
                 loading={loadingMainPage}
+                errorMessageMainPage={errorMessageMainPage}
+                setErrorMessageMainPage={setErrorMessageMainPage}
               />}
             />
             <Route 
@@ -54,14 +58,17 @@ const App = () => {
                 <MovieDescriptionPage 
                   setLoading={setLoadingMovieDescriptionPage}
                   loading={loadingMovieDescriptionPage}
+                  errorMessageDescriptionPage={errorMessageDescriptionPage}
+                  setErrorMessageDescriptionPage={setErrorMessageDescriptionPage}
               />} 
             />
           </Routes>
         </div>
+      </div>
+      <div className={styles.footer}>
         <Footer />
       </div>
     </div>
-    </>
   );
 }
 

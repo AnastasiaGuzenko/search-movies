@@ -1,13 +1,20 @@
-export function getMoviesURL(API, state, loadingMovies) {
+export function getMoviesURL(API, state, loadingMovies, ErrorMessage) {
   fetch(API)
       .then(response => response.json())
       .then(jsonResponse => {
-        state(jsonResponse.results);
-        const load = () => {
+        const loading = (status) => {
           if (loadingMovies){
-          return loadingMovies(false); 
+          return loadingMovies(status); 
         }}
-        load();
+
+        if (jsonResponse.results) {
+          state(jsonResponse.results);
+          loading(false);
+        } else {
+          ErrorMessage(jsonResponse.Error)
+          loading(false);
+        }
+
       });
 }
 

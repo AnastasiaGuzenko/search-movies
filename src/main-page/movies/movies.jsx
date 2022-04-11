@@ -4,14 +4,16 @@ import MovieDescriptionLink from '../../common/movie-description-link/movie-desc
 const Movies = ({
   title, value
 }) => {
-  
+  const sliceOfArr = () => {
+    return (value.slice(0, 10))
+  }
   return (
   <div>
-    <div className={styles.trends}>
-      <p>{title}</p>
-      <div className={styles.movies}>
+    <div className={styles['movie-genre-card']}>
+      <p className={styles['movie-genre-title']}>{title}</p>
+      <div className={styles['genre-movies']}>
         {
-          value.map(movie => (
+          sliceOfArr().map(movie => (
             <MovieDescriptionLink
               key={movie.id}
               poster={movie.poster_path}

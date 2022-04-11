@@ -8,7 +8,7 @@ const SearchMovies = ({
   if (!visible) {
     return null
   }
-  return <div className={styles['search-modal']}>
+  return <div className={styles.search}>
     {
       moviesSearchValue.map(movie => (
         <Search 

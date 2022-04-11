@@ -43,14 +43,14 @@ const Previews = ({
   }
 
   return (
-    <div>
+    <>
       <Preview
         title={previewMovie.title}
         overview={previewMovie.overview}
         backdrop={previewMovie.backdrop_path}
         id={previewMovie.id}
       />
-    </div>
+    </>
   )
 }
 

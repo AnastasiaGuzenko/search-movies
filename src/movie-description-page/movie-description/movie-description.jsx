@@ -20,6 +20,7 @@ const MovieDescription = ({
   const releaseYear = () => {
     return release_date.substr(0, 4);
   }
+
   let nameDirector;
   crew.map(person => {
     if (person.known_for_department === 'Directing' && person.job === 'Director') {
@@ -27,6 +28,7 @@ const MovieDescription = ({
       return nameDirector
     } 
   })
+
   const nameGener = genres.map(genre => {
     return genre.name
   })
@@ -41,42 +43,50 @@ const MovieDescription = ({
     } 
   }
 
-  // const movieTrailer = videos[0].key
+  const movieTrailer = videos[0].key
 
   return (
-    <div className={styles['movie-description']}>
+    <>
       <div 
-        className={styles['movie-description-up']}
+        className={styles['background-image']}
         style={{
         backgroundImage: `url(https://image.tmdb.org/t/p/w1280${myBackdrop})`}}>
-          <div className={styles['wrapper']}>
+          <div className={styles['gradient']}>
             <img
               className={styles.poster}
               src={`https://image.tmdb.org/t/p/w500${poster}`}
               >
             </img>
             <div className={styles.content}>
-              <div className={styles['content-up']}>
-                <p>{title} ({releaseYear()})</p>
-                <p>Directed by {nameDirector}</p>
+              <div>
+                <p 
+                  className={styles.title}>
+                  {title} ({releaseYear()})
+                </p>
+                <p>
+                  Directed by 
+                    <span className={styles.nameDirector}>
+                      {nameDirector}
+                    </span>
+                </p>
                 <p>{runtimeMovie()}</p>
                 <p>
                   {nameGener[0]} | {nameGener[1]} | {nameGener[2]} 
                 </p>
-                {/* <iframe 
-                  width="560" 
-                  height="315" 
+                <iframe 
+                  width="360" 
+                  height="260" 
                   src={`https://www.youtube.com/embed/${movieTrailer}`} 
                   title="YouTube video player" 
                   frameBorder="0" 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen>
-                </iframe> */}
+                </iframe>
               </div>
               <p>{overview}</p>
             </div>
           </div>
       </div>
-    </div>
+    </>
   )
 }
 

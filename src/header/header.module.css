@@ -1,7 +1,44 @@
 .header {
   display: flex;
+  align-items: center;
+  flex-direction: row;
   justify-content: space-between;
+  z-index: 100;
+  position: fixed;
+  width: 100%;
+  background-color: #141414;
 }
 
+.scroll {
+  background-color: rgba(73, 70, 70, 0);
+}
 
+.input {
+  border-radius: 5px;
+  background-color: transparent;
+  border: 1px solid hsla(0,0%,89.8%,.384);
+  color: #e5e5e5;
+  font-size: 16px;
+  padding: 8px;
+  margin: 0 10px;
+}
 
+.btn {
+  cursor: pointer;
+  font-size: 16px;
+  border: none;
+  font-weight: 700;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: rgba(241, 31, 24, 0.7);
+  width: 90px;
+}
+
+.link {
+  color: #e5e5e5;
+	text-decoration: none;
+}
+
+.search, .main-link{
+  padding: 20px;
+}

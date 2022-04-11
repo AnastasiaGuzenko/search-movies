@@ -1,5 +1,6 @@
-.search-modal {
+.search {
   display: flex;
   flex-wrap: wrap;
-  background-color: #141414;
+  justify-content: center;
+  padding: 80px 20px;
 }
