@@ -22,4 +22,4 @@ const MoviePersonCard = ({
     <p>{activity}</p>
   </div>
 }
-export default MoviePersonCard
+export default MoviePersonCard;

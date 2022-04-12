@@ -12,7 +12,6 @@ const App = () => {
   const [loadingMainPage, setLoadingMainPage] = useState(true);
   const [loadingMovieDescriptionPage, setLoadingMovieDescriptionPage] = useState(true);
   const [moviesSearchValue, setMoviesSearchValue] = useState([]);
-
   const [errorMessageMainPage, setErrorMessageMainPage] = useState(null);
   const [errorMessageDescriptionPage, setErrorMessageDescriptionPage] = useState(null);
 
@@ -71,5 +70,4 @@ const App = () => {
     </div>
   );
 }
-
 export default App;

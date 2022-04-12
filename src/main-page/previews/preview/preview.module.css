@@ -11,26 +11,31 @@
 	background-image: linear-gradient(0deg, rgb(20, 20, 20) 4%, rgba(20, 20, 20, 0.46) 100%);
 	position: relative;
 	height: 100%;
-}
+} 
+
 .content-wrapper {
 	z-index: 10;
 	width: 100%;
 	height: 100%;
 }
+
 .content {
 	padding: 14em 50px;
 	height: 10em;
 }
+
 .title {
 	font-size: 4.5rem;
 	line-height: 1.25em;
 	margin: 0;
 }
+
 .overview {
 	max-width: 900px;
 	display: flex;
 	flex-wrap: wrap;
 }
+
 .btn {
 	cursor: pointer;
 	font-size: 1rem;
@@ -44,6 +49,7 @@
 	margin-bottom: 0.85em;
 	width: 90px;
 }
+
 .link {
 	color: #e5e5e5;
 	text-decoration: none;

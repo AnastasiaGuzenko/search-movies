@@ -44,7 +44,7 @@ const MainPage = ({
   }, [])
   
   return (
-    <div>
+    <>
       <div>
         {loading && !errorMessageMainPage ? (
          <Loading />
@@ -114,8 +114,7 @@ const MainPage = ({
           </>
         )}
       </div>
-    </div>
+    </>
   )
 }
-
-export default MainPage
+export default MainPage;

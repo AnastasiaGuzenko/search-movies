@@ -5,9 +5,11 @@ const SearchMovies = ({
   visible,
   moviesSearchValue,
 }) => {
+  
   if (!visible) {
     return null
   }
+
   return <div className={styles.search}>
     {
       moviesSearchValue.map(movie => (
@@ -20,4 +22,4 @@ const SearchMovies = ({
     }
   </div>
 }
-export default SearchMovies
+export default SearchMovies;

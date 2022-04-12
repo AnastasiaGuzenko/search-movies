@@ -2,7 +2,6 @@ import MovieDescription from "./movie-description/movie-description"
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 import MovieDetails from "./movie-details/movie-details";
-import styles from './movie-description-page.module.css'
 import Loading from "../common/loading/loading";
 
 const MovieDescriptionPage = ({
@@ -11,6 +10,7 @@ const MovieDescriptionPage = ({
   errorMessageDescriptionPage,
   setErrorMessageDescriptionPage,
 }) => {
+
   const {id} = useParams();
   const [movie, setMovie] = useState([]);
 
@@ -59,4 +59,4 @@ const MovieDescriptionPage = ({
     )}
   </>
 }
-export default MovieDescriptionPage
+export default MovieDescriptionPage;

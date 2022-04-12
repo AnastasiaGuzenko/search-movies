@@ -7,11 +7,13 @@ const Preview = ({
   backdrop,
   id,
 }) => {
+  
   let myBackdrop = backdrop;
   if (!myBackdrop) {
     myBackdrop = '/xGW2hWSmL92qKsgUQEpzTOdWmmk.jpg';
   }
-  return <div>
+
+  return <>
     <div 
       className={styles['background-image']}
       style={{
@@ -20,7 +22,10 @@ const Preview = ({
       <div className={styles.gradient}>
         <div className={styles['content-wrapper']}>
           <div className={styles.content}>
-            <h1 className={styles.title}>{title}</h1>
+            <h1 
+              className={styles.title}>
+                {title}
+            </h1>
             <button className={styles.btn}>
               <Link 
                 to={`movie-description/${id}`}
@@ -29,11 +34,14 @@ const Preview = ({
                   Details
               </Link>
             </button>
-            <p className={styles.overview}>{overview}</p>
+            <p 
+              className={styles.overview}>
+                {overview}
+            </p>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </>
 }
-export default Preview
+export default Preview;

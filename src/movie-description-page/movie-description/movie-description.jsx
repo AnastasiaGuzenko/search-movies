@@ -11,7 +11,6 @@ const MovieDescription = ({
   genres,
   videos
 }) => {
-
   let myBackdrop = backdrop_path;
   if (!myBackdrop) {
     myBackdrop = '/xGW2hWSmL92qKsgUQEpzTOdWmmk.jpg';
@@ -89,5 +88,4 @@ const MovieDescription = ({
     </>
   )
 }
-
-export default MovieDescription
+export default MovieDescription;

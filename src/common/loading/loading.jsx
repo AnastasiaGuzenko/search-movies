@@ -1,7 +1,9 @@
 import styles from './loading.module.css'
+
 const Loading = () => {
-  return <div>
+  return <>
     <p className={styles.loading}>Loading...</p>
-  </div>
+  </>
 }
-export default Loading
+
+export default Loading;

@@ -9,6 +9,7 @@ const Header = ({
   setMoviesSearchValue,
   setVisible,
 }) => {
+
   const [inputValue, setInputValue] = useState('');
   const [scroll, setScroll] = useState(0);
 
@@ -48,12 +49,10 @@ const Header = ({
     <div
       onClick={handleUpButton}
       className={className}
-
     >
       <div className={styles['main-link']}>
         <button
-        className={styles.btn}
-        >
+          className={styles.btn}>
           <Link 
             className={styles.link}
             to="/">
@@ -81,5 +80,4 @@ const Header = ({
     </div>
   )
 }
-
 export default Header;

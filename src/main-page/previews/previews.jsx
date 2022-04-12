@@ -14,7 +14,6 @@ const Previews = ({
   },[]);
 
   useEffect(() => {
-
     let interval;
 
     if (previewMovies.length) {
@@ -53,5 +52,4 @@ const Previews = ({
     </>
   )
 }
-
-export default Previews
+export default Previews;
