@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import MovieDetails from "./movie-details";
 import { Loading } from "../common";
+import { v1 as uuidv1 } from 'uuid';
 
 const MovieDescriptionPage = ({
   setLoading,
@@ -46,6 +47,22 @@ const MovieDescriptionPage = ({
     )
   }
 
+  const resultsMovie = () => {
+    return (movie.similar.results)
+  }
+
+  const castMovie = () => {
+    return (movie.credits.cast)
+  }
+
+  const crewMovie = () => {
+    return (movie.credits.crew)
+  }
+
+  const sliceArr = (value, max) => {
+    return (value().slice(0, max))
+  }
+  
   return (
     <>
       <MovieDescription
@@ -58,11 +75,13 @@ const MovieDescriptionPage = ({
         crew={movie.credits.crew}
         genres={movie.genres}
         videos={movie.videos.results}
-
+        key={uuidv1()}
       />
       <MovieDetails
-        credits={movie.credits}
-        similar={movie.similar}
+        cast={sliceArr(castMovie, 9)}
+        crew={sliceArr(crewMovie, 9)}
+        results={sliceArr(resultsMovie, 4)}
+        key={uuidv1()}
       />
     </>
   );

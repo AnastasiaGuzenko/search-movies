@@ -1,7 +1,7 @@
 .genre-movies {
   display: flex;
   flex-wrap: wrap;
-} 
+}
 
 .movie-genre-card {
   font-size: 26px;

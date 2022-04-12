@@ -4,20 +4,18 @@ import { v1 as uuidv1 } from 'uuid';
 import { MovieDescriptionLink } from "../../common";
 
 const MovieDetails = ({
-  credits,
-  similar,
+  results,
+  cast,
+  crew,
 }) => {
-  const sliceOfArr = (props, max) => {
-    return (props.slice(0, max))
-  }
-
+  
   return (
     <div className={styles['movie-details-wrapper']}>
       <div>
         <p className={styles.title}>Cast</p>
         <div className={styles['movie-details']}>
           {
-            sliceOfArr(credits.cast, 9).map(person => (
+            cast.map(person => (
               <MoviePersonCard
                 profilePath={person.profile_path}
                 name={person.name}
@@ -32,7 +30,7 @@ const MovieDetails = ({
         <p className={styles.title}>Crew</p>
         <div className={styles['movie-details']}>
           {
-            sliceOfArr(credits.crew, 9).map(person => (
+            crew.map(person => (
               <MoviePersonCard
                 profilePath={person.profile_path}
                 name={person.name}
@@ -47,9 +45,9 @@ const MovieDetails = ({
         <p className={styles.title}>More Like This</p>
         <div className={styles['movie-details']}>
           {
-            sliceOfArr(similar.results, 4).map(movie => (
+            results.map(movie => (
               <MovieDescriptionLink
-                key={movie.id}
+                key={uuidv1()}
                 poster={movie.poster_path}
                 id={movie.id}
               />

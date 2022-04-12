@@ -9,7 +9,7 @@ const MovieDescription = ({
   release_date,
   crew,
   genres,
-  videos
+  videos,
 }) => {
   let myBackdrop = backdrop_path;
   if (!myBackdrop) {
@@ -21,10 +21,10 @@ const MovieDescription = ({
   }
 
   let nameDirector;
-  crew.map(person => {
+  crew.forEach(person => {
     if (person.known_for_department === 'Directing' && person.job === 'Director') {
       nameDirector = person.name
-      return nameDirector
+      return;
     } 
   })
 
