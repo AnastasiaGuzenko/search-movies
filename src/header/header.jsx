@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect} from "react";
-import styles from './header.module.css'
+import { useState, useEffect } from "react";
+import styles from './header.module.css';
 import classNames from 'classnames/bind';
 
 let cx = classNames.bind(styles);
@@ -50,17 +50,23 @@ const Header = ({
       onClick={handleUpButton}
       className={className}
     >
-      <div className={styles['main-link']}>
+      <div
+        className={styles['main-link']}
+      >
         <button
-          className={styles.btn}>
-          <Link 
+          className={styles.btn}
+        >
+          <Link
             className={styles.link}
-            to="/">
+            to="/"
+          >
             Main
           </Link>
         </button>
       </div>
-      <div className={styles.search}>
+      <div 
+        className={styles.search}
+      >
         <input
           type="text"
           value={inputValue}
@@ -69,15 +75,18 @@ const Header = ({
         />
         <button
           onClick={search}
-          className={styles.btn}>
-            <Link
-              className={styles.link}
-              to={'/search'}>
-              Search
-            </Link>
+          className={styles.btn}
+        >
+          <Link
+            className={styles.link}
+            to={'/search'}
+          >
+            Search
+          </Link>
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
+
 export default Header;

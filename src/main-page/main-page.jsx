@@ -1,19 +1,20 @@
-import Previews from './previews/previews';
-import styles from './main-page.module.css'
-import { useEffect, useState} from 'react';
-import Movies from './movies/movies';
-import {getMoviesURL} from '../utils'
-import Loading from '../common/loading/loading';
-
-const MOVIE_API_URL_TRENDING = 'https://api.themoviedb.org/3/trending/movie/week?api_key=4fff9675d3d2dfe17c3c52af125bcd71&language=en-US';
-const MOVIE_API_URL_POPULAR = 'https://api.themoviedb.org/3/movie/popular?api_key=4fff9675d3d2dfe17c3c52af125bcd71&language=en-US';
-const MOVIE_API_URL_TOP_RATED_MOVIES = 'https://api.themoviedb.org/3/movie/top_rated?api_key=4fff9675d3d2dfe17c3c52af125bcd71&language=en-US';
-const MOVIE_API_URL_TOP_COMEDY_MOVIES = 'https://api.themoviedb.org/3/discover/movie?with_genres=35&api_key=4fff9675d3d2dfe17c3c52af125bcd71&language=en-US';
-const MOVIE_API_URL_TOP_ACTION_MOVIES = 'https://api.themoviedb.org/3/discover/movie?with_genres=28&api_key=4fff9675d3d2dfe17c3c52af125bcd71&language=en-US';
-const MOVIE_API_URL_TOP_ROMANTIC_MOVIES = 'https://api.themoviedb.org/3/discover/movie?with_genres=10749&api_key=4fff9675d3d2dfe17c3c52af125bcd71&language=en-US';
-const MOVIE_API_URL_CRIME_MOVIES = 'https://api.themoviedb.org/3/discover/movie?with_genres=80&api_key=4fff9675d3d2dfe17c3c52af125bcd71&language=en-US';
-const MOVIE_API_URL_HORROR_MOVIES = 'https://api.themoviedb.org/3/discover/movie?with_genres=27&api_key=4fff9675d3d2dfe17c3c52af125bcd71&language=en-US';
-const MOVIE_API_URL_DOCUMENTARIES = 'https://api.themoviedb.org/3/discover/movie?with_genres=99&api_key=4fff9675d3d2dfe17c3c52af125bcd71&language=en-US';
+import Previews from './previews';
+import styles from './main-page.module.css';
+import { useEffect, useState } from 'react';
+import Movies from './movies';
+import { getMoviesURL } from '../utils';
+import { Loading } from '../common';
+import {
+  MOVIE_API_URL_TRENDING,
+  MOVIE_API_URL_POPULAR,
+  MOVIE_API_URL_TOP_RATED_MOVIES,
+  MOVIE_API_URL_TOP_COMEDY_MOVIES,
+  MOVIE_API_URL_TOP_ACTION_MOVIES,
+  MOVIE_API_URL_TOP_ROMANTIC_MOVIES,
+  MOVIE_API_URL_CRIME_MOVIES,
+  MOVIE_API_URL_HORROR_MOVIES,
+  MOVIE_API_URL_DOCUMENTARIES,
+} from './main-page-constants';
 
 const MainPage = ({
   setLoading,
@@ -42,79 +43,86 @@ const MainPage = ({
     getMoviesURL(MOVIE_API_URL_HORROR_MOVIES, setHorrorMovies, setLoading, setErrorMessageMainPage);
     getMoviesURL(MOVIE_API_URL_DOCUMENTARIES, setDocumentaries, setLoading, setErrorMessageMainPage);
   }, [])
-  
+
+  if (loading && !errorMessageMainPage) {
+    return <Loading />
+  }
+
+  if (errorMessageMainPage) {
+    return (
+      <div 
+        className="errorMessage"
+      >
+        Oops, something went wrong. Try refreshing the page.
+      </div>
+    )
+  }
+
+  const sliceOfArr = (value) => {
+    return (value.slice(0, 10))
+  }
+
   return (
     <>
-      <div>
-        {loading && !errorMessageMainPage ? (
-         <Loading />
-         ) : errorMessageMainPage ? (
-          <div className="errorMessage">Oops, something went wrong. Try refreshing the page.</div>
-         ) : (
-          <>
-            <Previews/>
-            <div className={styles['movies-wrapper']}>
-              <div className={styles.movies}>
-                <Movies
-                  value={trendingMovies}
-                  title='Trending Movies'
-                />
-              </div>
-              <div className={styles.movies}>
-                <Movies
-                  value={popularMovies}
-                  title='Popular Movies'
-                />
-              </div>
-              <div className={styles.movies}>
-                <Movies
-                  value={topRatedMovies}
-                  title='Top Rated Movies'
-                />
-              </div>
-              <div className={styles.movies}>
-                <Movies
-                  value={comedyMovies}
-                  title='Comedy Movies'
-                />
-              </div>
-              <div className={styles.movies}>
-                <Movies
-                  value={actionMovies}
-                  title='Action Movies'
-                />
-              </div>
-              <div className={styles.movies}>
-                <Movies
-                  value={romanticMovies}
-                  title='Romantic Movies'
-                />
-              </div>
-              <div className={styles.movies}>
-                <Movies
-                  value={crimeMovies}
-                  title='Crime Movies'
-                />
-              </div>
-              <div className={styles.movies}>
-                <Movies
-                  value={horrorMovies}
-                  title='Horror Movies'
-                />
-              </div>
-              <div className={styles.movies}>
-                <Movies
-                  value={documentaries}
-                  title='Documentaries'
-                />
-              </div>
-
-            </div>
-            
-          </>
-        )}
+      <Previews/>
+      <div className={styles['movies-wrapper']}>
+        <div className={styles.movies}>
+          <Movies
+            value={sliceOfArr(trendingMovies)}
+            title='Trending Movies'
+          />
+        </div>
+        <div className={styles.movies}>
+          <Movies
+            value={sliceOfArr(popularMovies)}
+            title='Popular Movies'
+          />
+        </div>
+        <div className={styles.movies}>
+          <Movies
+            value={sliceOfArr(topRatedMovies)}
+            title='Top Rated Movies'
+          />
+        </div>
+        <div className={styles.movies}>
+          <Movies
+            value={sliceOfArr(comedyMovies)}
+            title='Comedy Movies'
+          />
+        </div>
+        <div className={styles.movies}>
+          <Movies
+            value={sliceOfArr(actionMovies)}
+            title='Action Movies'
+          />
+        </div>
+        <div className={styles.movies}>
+          <Movies
+            value={sliceOfArr(romanticMovies)}
+            title='Romantic Movies'
+          />
+        </div>
+        <div className={styles.movies}>
+          <Movies
+            value={sliceOfArr(crimeMovies)}
+            title='Crime Movies'
+          />
+        </div>
+        <div className={styles.movies}>
+          <Movies
+            value={sliceOfArr(horrorMovies)}
+            title='Horror Movies'
+          />
+        </div>
+        <div className={styles.movies}>
+          <Movies
+            value={sliceOfArr(documentaries)}
+            title='Documentaries'
+          />
+        </div>
       </div>
     </>
-  )
-}
+  );
+};
+
 export default MainPage;

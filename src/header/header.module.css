@@ -37,9 +37,10 @@
 
 .link {
   color: #e5e5e5;
-	text-decoration: none;
+  text-decoration: none;
 }
 
-.search, .main-link{
+.search, 
+.main-link{
   padding: 20px;
 }

@@ -1,4 +1,4 @@
-export function getMoviesURL(API, state, loadingMovies, ErrorMessage) {
+export function getMoviesURL(API, state, loadingMovies, setErrorMessage) {
   fetch(API)
       .then(response => response.json())
       .then(jsonResponse => {
@@ -11,10 +11,9 @@ export function getMoviesURL(API, state, loadingMovies, ErrorMessage) {
           state(jsonResponse.results);
           loading(false);
         } else {
-          ErrorMessage(jsonResponse.Error)
+          setErrorMessage(jsonResponse.Error)
           loading(false);
         }
 
       });
-}
-
+};

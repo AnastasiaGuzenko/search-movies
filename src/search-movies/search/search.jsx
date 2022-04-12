@@ -1,19 +1,19 @@
-import MovieDescriptionLink from "../../common/movie-description-link/movie-description-link"
+import MovieDescriptionLink from "../../common/movie-description-link"
 
 const Search = ({
   poster,
   id,
 }) => {
-  
   if (!poster) {
     return null
   }
 
-  return <>
+  return (
     <MovieDescriptionLink 
       poster={poster}
       id={id}
     />
-  </>
-}
+  );
+};
+
 export default Search;

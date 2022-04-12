@@ -1,8 +1,8 @@
-import MovieDescription from "./movie-description/movie-description"
-import { useParams } from "react-router-dom"
-import { useState, useEffect } from "react"
-import MovieDetails from "./movie-details/movie-details";
-import Loading from "../common/loading/loading";
+import MovieDescription from "./movie-description";
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import MovieDetails from "./movie-details";
+import { Loading } from "../common";
 
 const MovieDescriptionPage = ({
   setLoading,
@@ -27,36 +27,45 @@ const MovieDescriptionPage = ({
         }
       });
   }, [id])
-  
+
   if (!Object.keys(movie).length) {
     return null;
   }
-  
-  return <>
-    {loading && !errorMessageDescriptionPage ? (
-      <Loading/>
-    ) : errorMessageDescriptionPage ? (
-      <div className="errorMessage">Oops, something went wrong. Try refreshing the page.</div>
-    ) : (
-      <div>
-        <MovieDescription
-          title={movie.title}
-          overview={movie.overview}
-          runtime={movie.runtime}
-          poster={movie.poster_path}
-          backdrop_path={movie.backdrop_path}
-          release_date={movie.release_date}
-          crew={movie.credits.crew}
-          genres={movie.genres}
-          videos={movie.videos.results}
 
-        />
-        <MovieDetails
-          credits={movie.credits}
-          similar={movie.similar}
-        />
+  if (loading && !errorMessageDescriptionPage) {
+    return <Loading/>
+  }
+
+  if (errorMessageDescriptionPage) {
+    return (
+      <div 
+        className="errorMessage"
+      >
+        Oops, something went wrong. Try refreshing the page.
       </div>
-    )}
-  </>
-}
+    )
+  }
+
+  return (
+    <>
+      <MovieDescription
+        title={movie.title}
+        overview={movie.overview}
+        runtime={movie.runtime}
+        poster={movie.poster_path}
+        backdrop_path={movie.backdrop_path}
+        release_date={movie.release_date}
+        crew={movie.credits.crew}
+        genres={movie.genres}
+        videos={movie.videos.results}
+
+      />
+      <MovieDetails
+        credits={movie.credits}
+        similar={movie.similar}
+      />
+    </>
+  );
+};
+
 export default MovieDescriptionPage;

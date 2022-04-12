@@ -11,15 +11,20 @@ const MoviePersonCard = ({
     ? `https://image.tmdb.org/t/p/w500${profilePath}`
     : defaultProfilePath;
 
-  return <div className={styles['movie-person-card']}>
-    <div>
-      <img 
-        className={styles.img}
-        src={imgSRC}
-      />
+  return (
+    <div 
+      className={styles['movie-person-card']}
+    >
+      <div>
+        <img 
+          className={styles.img}
+          src={imgSRC}
+        />
+      </div>
+      <p>{name}</p>
+      <p>{activity}</p>
     </div>
-    <p>{name}</p>
-    <p>{activity}</p>
-  </div>
-}
+  );
+};
+
 export default MoviePersonCard;

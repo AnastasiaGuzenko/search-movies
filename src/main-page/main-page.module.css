@@ -1,6 +1,7 @@
 .movies-wrapper {
   padding: 0 20px;
 }
+
 .movies {
   display: flex;
   align-items: center;
