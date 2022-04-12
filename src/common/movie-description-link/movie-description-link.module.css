@@ -1,0 +1,7 @@
+.poster {
+  width: 165px;
+  height: 265px;
+  padding: 10px;
+  border-radius: 18px;
+  object-fit: cover;
+}

@@ -1,3 +1,8 @@
+.movies-wrapper {
+  padding: 0 20px;
+}
+
 .movies {
-  border: solid 3px red;
+  display: flex;
+  align-items: center;
 }

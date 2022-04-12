@@ -1,0 +1,9 @@
+.movie-person-card {
+  margin: 0 20px;
+  text-align: center;
+}
+
+.img {
+  width: 120px;
+  border-radius: 50px;
+}

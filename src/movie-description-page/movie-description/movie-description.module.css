@@ -1,3 +1,38 @@
+.background-image {
+  z-index: 1;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+.gradient {
+  z-index: 2;
+  background: linear-gradient(0deg, rgb(20, 20, 20) 0%, rgba(20, 20, 20, 0.808) 100%);
+  display: flex;
+  padding: 120px 80px 80px 80px;
+}
+
 .poster {
-  width: 200px;
+  z-index: 3;
+  width: 365px;
+  height: 565px;
+  padding: 20px;
+}
+
+.content {
+  padding: 20px;
+  font-size: 18px;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 800;
+  margin: 0;
+}
+
+.nameDirector {
+  margin-left: 5px;
+  font-weight: 700;
 }
