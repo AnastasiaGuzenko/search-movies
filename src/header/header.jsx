@@ -58,7 +58,7 @@ const Header = ({
         >
           <Link
             className={styles.link}
-            to="/"
+            to="/main"
           >
             Main
           </Link>
