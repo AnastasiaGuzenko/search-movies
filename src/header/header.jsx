@@ -58,7 +58,7 @@ const Header = ({
         >
           <Link
             className={styles.link}
-            to="/search-movies"
+            to="/"
           >
             Main
           </Link>
@@ -79,7 +79,7 @@ const Header = ({
         >
           <Link
             className={styles.link}
-            to={'/search-movies/search'}
+            to={'/search'}
           >
             Search
           </Link>
