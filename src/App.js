@@ -40,7 +40,7 @@ const App = () => {
                 }
             />
             <Route 
-              path='/main' 
+              path='/' 
               element=
                 {
                   <MainPage 
