@@ -30,7 +30,7 @@ const App = () => {
         <div>
           <Routes>
             <Route
-              path='/search'
+              path='/search-movies/search'
               element=
                 {
                   <SearchMovies
@@ -40,7 +40,7 @@ const App = () => {
                 }
             />
             <Route 
-              path='/' 
+              path='/search-movies' 
               element=
                 {
                   <MainPage 
