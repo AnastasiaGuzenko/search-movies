@@ -2,14 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { HashRouter } from 'react-router-dom';
+import { HashRouter as Router} from "react-router-dom";
 import './index.css'
 
 ReactDOM.render(
   <React.StrictMode>
-    <HashRouter basename={process.env.PUBLIC_URL}>
+    <Router basename='/'>
       <App />
-    </HashRouter>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
